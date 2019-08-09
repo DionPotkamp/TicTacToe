@@ -1,0 +1,90 @@
+* {
+    user-select: none;
+}
+body {
+    background-color: black;
+}
+.stats {
+    color: black;
+}
+#canvas {
+    width: 600px;
+    max-width: 600px;
+    height: 600px;
+    max-height: 600px;
+    margin: auto;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.border {
+    border-color: black;
+}
+.cell {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 200px;
+    max-width: 200px;
+    height: 200px;
+    max-height: 200px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid lightgray;
+    text-align: center;
+    font-size: 130px;
+}
+.text {
+    color: black;
+    font-size: 200%;
+    text-align: center;
+}
+.settings {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    font-size: 120%;
+    margin: 20px;
+}
+.github {
+    font-size: 33px;
+}
+
+@media only screen and (max-width: 600px) {
+    #canvas {
+        width: 300px;
+        max-width: 300px;
+        height: 300px;
+        max-height: 300px;
+    }
+    .cell {
+        width: 100px;
+        max-width: 100px;
+        height: 100px;
+        max-height: 100px;
+        font-size: 65px;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    body, .navbar-brand, .btn {
+        font-size: 140%;
+    }
+    .github {
+        font-size: 50px;
+    }
+    #canvas {
+        width: 1200px;
+        max-width: 1200px;
+        height: 1200px;
+        max-height: 1200px;
+    }
+    .cell {
+        width: 400px;
+        max-width: 400px;
+        height: 400px;
+        max-height: 400px;
+        font-size: 250px;
+    }
+}
