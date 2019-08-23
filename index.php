@@ -93,4 +93,4 @@
 <!-- JS for the game -->
 <script src="game.js"></script>
 </body>
-</html
+</html>
