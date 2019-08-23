@@ -7,7 +7,7 @@ board = [
     ['', '', '']
 ];
 /**
- * positions are all the available spots on the board. First letter = row, second = collum
+ * positions: all the available spots on the board. First letter = row, second = collum
  */
 positions = [
     "00", "01", "02", 
@@ -19,7 +19,7 @@ winner = null;
 isAutoPlaying = false;
 
 /**
- * Can be set by the player. How long the interval is between each turn
+ * Can be set by the player. How long the interval will be between each turn
  */
 autoPlayDelay = 250;
 document.getElementById('speed').innerHTML = 'Set&nbsp;autoplay&nbsp;speed ('+autoPlayDelay+')';
@@ -72,13 +72,13 @@ CurrentPlayer = setNewPlayer();
 PlayerX = '<i class="fas fa-times"></i>';
 PlayerO = '<i class="far fa-circle"></i>';
 
-/** The scores */
+/** The scores, wins and draws */
 PlayerXWins = 0;
 PlayerOWins = 0;
 PlayerDraws = 0;
 
 /**
- * @return X or O. randomly choosen from the players array
+ * @return String X or O. randomly choosen from the players array
  */
 function setNewPlayer() {
     return players[Math.floor(Math.random() * players.length)];
@@ -86,29 +86,27 @@ function setNewPlayer() {
 
 /**
  * Switch to the other player
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
 function switchPlayer() {
     if (CurrentPlayer == "") {
-        console.error("CurrentPlayer is empty and should have already been defined.");
         return false;
     } else if (CurrentPlayer == "X") {
         CurrentPlayer = "O";
-        console.info("Player switched to: " + CurrentPlayer);
+        document.getElementById('text').innerHTML = "Current player is " + CurrentPlayer;
         return true;
     } else if (CurrentPlayer == "O") {
         CurrentPlayer = "X";
-        console.info("Player switched to: " + CurrentPlayer);
+        document.getElementById('text').innerHTML = "Current player is " + CurrentPlayer;
         return true;
     } else {
-        console.warn("Could not switch player");
         return false;
     }
 }
 
 /**
  * Place the X or O symbol in the html on the given position
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
 function place(position) {
     if (CurrentPlayer == "X") {
@@ -119,27 +117,23 @@ function place(position) {
         return true;
     } else {
         document.getElementById(position).innerHTML = "?";
-        console.warn("unknown player");
         return false;
     }
 }
 
 /**
  * Check in array board if the given position is available or not
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
 function checkIfAvailable(position) {
     positionArray = position.split("");
     var boardPos = board[positionArray[0]][positionArray[1]];
 
     if(boardPos == "") {
-        console.log("Postition: " + positionArray + " is avaiable");
         return true;
     } else if (boardPos == "X" || boardPos == "O") {
-        console.warn("Postition: " + positionArray + " is occupied with player: " + boardPos);
         return false;
     } else {
-        console.error("Postition: " + positionArray + " is occupied with an unknown player: " + boardPos);
         return false;
     }
    
@@ -148,7 +142,7 @@ function checkIfAvailable(position) {
 /**
  * Occupies the position in array board with the current player
  * And removes the position in the array positions
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
 function putInBoard(position) {
     var positionArray = position.split("");
@@ -161,14 +155,13 @@ function putInBoard(position) {
             return false;
         }
     } else {
-        console.warn('This player ('+CurrentPlayer+') is not valid');
         return false;
     }
 }
 
 /**
  * Colors the winner green, or all gray on draw
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
 function drawWin(type, cell) {
     if (type == 'horizontal') {
@@ -232,8 +225,8 @@ function equal(a, b, c) {
 
 /**
  * Checks if the current player made a winning move
- * if so, it will add a win and call drawWin
- * @return boolean, if the executions was a succes or not.
+ * if so, it will add a win and call function drawWin
+ * @return boolean, if the execution was a succes or not.
  */
 function checkWinner() {
     //horizontal
@@ -286,7 +279,7 @@ function checkWinner() {
 
 /**
  * If the player wins this round it will add one to the score
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
 function addWin() {
     if (CurrentPlayer == "X") {
@@ -302,11 +295,9 @@ function addWin() {
 
 /**
  * Resets all of the variables
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
-function restartGame() {
-    console.clear();
-    
+function restartGame() {    
     board = [['', '', ''],['', '', ''],['', '', '']];
     positions = ["00", "01", "02", "10", "11", "12", "20", "21", "22"];
     positionArray = "";
@@ -333,7 +324,7 @@ function restartGame() {
 
 /**
  * Resets all of the scores
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
 function resetScores() {
     
@@ -349,7 +340,7 @@ function resetScores() {
 
 /**
  * Is called if the button Autoplay is pressed
- * @return boolean, if the executions was a succes or not.
+ * @return void, to stop the function.
  */
 function coreAutoPlay() {
     if (isAutoPlaying) {
@@ -361,7 +352,7 @@ function coreAutoPlay() {
 }
 
 /**
- * The logig of the game, puts all of the functions together
+ * The logic of the game, puts all of the functions together
  *      restarts the game when necesary
  * @return void, to break out of the loop.
  */
@@ -396,23 +387,20 @@ function autoPlay() {
                     }
                 }
             } else {
-                console.warn('could not place');
                 return;
             }
         } else {
-            console.error('could not put values in board array');
             return;
         }
     } else {
-        console.warn('this place is not available');
         return;
     }
 }
 
 /**
- * The logig of the game, puts all of the functions together
+ * The logic of the game, puts all of the functions together
  *      restarts the game when necesary
- * @return boolean, if the executions was a succes or not.
+ * @return boolean, if the execution was a succes or not.
  */
 function core(position) {
     if (winner != null) restartGame();
@@ -434,15 +422,12 @@ function core(position) {
                     }
                 }
             } else {
-                console.warn('could not place');
                 return;
             }
         } else {
-            console.error('could not put values in board array');
             return;
         }
     } else {
-        console.warn('this place is not available');
         return;
     }
 }
