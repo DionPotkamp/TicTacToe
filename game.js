@@ -1,7 +1,7 @@
 /**
  * Board is the array where the symbol (representing the player) is stored.
  */
-board = [
+let board = [
     ['', '', ''],
     ['', '', ''],
     ['', '', '']
@@ -9,19 +9,19 @@ board = [
 /**
  * positions: all the available spots on the board. First letter = row, second = column
  */
-positions = [
+let positions = [
     "00", "01", "02", 
     "10", "11", "12", 
     "20", "21", "22"
 ];
-positionArray = "";
-winner = null;
-isAutoPlaying = false;
+let positionArray = "";
+let winner = null;
+let isAutoPlaying = false;
 
 /**
  * Can be set by the player. How long the interval will be between each turn
  */
-autoPlayDelay = 250;
+let autoPlayDelay = 250;
 document.getElementById('speed').innerHTML = 'Set&nbsp;autoplay&nbsp;speed ('+autoPlayDelay+')';
 function autoplaySpeed() {
     autoPlayDelay = parseInt(prompt('Give the delay in milliseconds'));
@@ -35,7 +35,7 @@ function autoplaySpeed() {
 /**
  * Can be set by the player. The number of times the computer plays the game.
  */
-autoPlayIterations = 10;
+let autoPlayIterations = 10;
 document.getElementById('iteration').innerHTML = 'Set&nbsp;autoplay&nbsp;iterations ('+autoPlayIterations+')';
 function autoplayIt() {
     autoPlayIterations = parseInt(prompt('Give the number of inerations'));
@@ -49,7 +49,7 @@ function autoplayIt() {
 /**
  * Can be set by the player. Controls if the score is added to the players total.
  */
-autoPlayAddWin = false;
+let autoPlayAddWin = false;
 document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
 function autoplayScore() {
     autoPlayAddWin = confirm('Add autoplay wins to score. Choose OK to set to true, Choose cancel to set to false');
@@ -61,24 +61,24 @@ function autoplayScore() {
         document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
     }
 }
-autoPlayI = 0;
+let autoPlayI = 0;
 
 /** array of all possible players */
-players = ['X', 'O'];
-CurrentPlayer = setNewPlayer();
+let players = ['X', 'O'];
+let CurrentPlayer = setNewPlayer();
     document.getElementById('text').innerHTML = 'Starting player is: ' + CurrentPlayer;
 
 /** using font awesome to draw the X and O */
-PlayerX = '<i class="fas fa-times"></i>';
-PlayerO = '<i class="far fa-circle"></i>';
+let PlayerX = '<i class="fas fa-times"></i>';
+let PlayerO = '<i class="far fa-circle"></i>';
 
 /** The scores, wins and draws */
-PlayerXWins = 0;
-PlayerOWins = 0;
-PlayerDraws = 0;
+let PlayerXWins = 0;
+let PlayerOWins = 0;
+let PlayerDraws = 0;
 
 /**
- * @return String X or O. randomly choosen from the players array
+ * @return String X or O. randomly chosen from the players array
  */
 function setNewPlayer() {
     return players[Math.floor(Math.random() * players.length)];
@@ -127,7 +127,7 @@ function place(position) {
  */
 function checkIfAvailable(position) {
     positionArray = position.split("");
-    var boardPos = board[positionArray[0]][positionArray[1]];
+    let boardPos = board[positionArray[0]][positionArray[1]];
 
     if(boardPos === "") {
         return true;
@@ -145,7 +145,7 @@ function checkIfAvailable(position) {
  * @return boolean, if the execution was a success or not.
  */
 function putInBoard(position) {
-    var positionArray = position.split("");
+    let positionArray = position.split("");
 
     if (CurrentPlayer === "X" || CurrentPlayer === "O") {
         if (board[positionArray[0]][positionArray[1]] = CurrentPlayer) {
@@ -409,8 +409,3 @@ function core(position) {
         }
     }
 }
-
-// -------------------------------
-//             TO-DO 
-//     Save state of the board/scores/settings in cookies,
-//      so it can be restored if the page is reloaded.
