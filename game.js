@@ -25,7 +25,7 @@ let autoPlayDelay = 250;
 document.getElementById('speed').innerHTML = 'Set&nbsp;autoplay&nbsp;speed ('+autoPlayDelay+')';
 function autoplaySpeed() {
     autoPlayDelay = parseInt(prompt('Give the delay in milliseconds'));
-    if (autoPlayDelay === null || autoPlayDelay === "") {
+    if (!Number.isInteger(autoPlayDelay)) {
         autoPlayDelay = 250;
     } else {
         document.getElementById('speed').innerHTML = 'Set&nbsp;autoplay&nbsp;speed ('+autoPlayDelay+')';
@@ -39,7 +39,7 @@ let autoPlayIterations = 10;
 document.getElementById('iteration').innerHTML = 'Set&nbsp;autoplay&nbsp;iterations ('+autoPlayIterations+')';
 function autoplayIt() {
     autoPlayIterations = parseInt(prompt('Give the number of inerations'));
-    if (autoPlayIterations === null || autoPlayIterations === "") {
+    if (!Number.isInteger(autoPlayIterations)) {
         autoPlayIterations = 10;
     } else {
         document.getElementById('iteration').innerHTML = 'Set&nbsp;autoplay&nbsp;iterations ('+autoPlayIterations+')';
@@ -53,7 +53,7 @@ let autoPlayAddWin = false;
 document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
 function autoplayScore() {
     autoPlayAddWin = confirm('Add autoplay wins to score. Choose OK to set to true, Choose cancel to set to false');
-    if (autoPlayAddWin === null || autoPlayAddWin === "") {
+    if (typeof autoPlayAddWin !== "boolean") {
         autoPlayAddWin = false;
         document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
     } else {
