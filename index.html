@@ -34,7 +34,9 @@
         </li> 
         <!-- https://github.com/DionPotkamp/TicTacToe -->
         <li class="nav-item mr-2 mb-2">
-            <a class="nav-link" href="https://github.com/DionPotkamp/TicTacToe"><i class="fab fa-github github"></i></a>
+            <a class="nav-link" href="https://github.com/DionPotkamp/TicTacToe">
+                <span class="fab fa-github github"></span>
+            </a>
         </li> 
         </ul>
     <!-- Text output field -->
@@ -54,19 +56,22 @@
 </nav>
 <!-- The actual play field -->
 <div class="canvas mt-3 p-0 mx-auto" id="canvas">
-    <div class="cell border p-0 m-0" id="00" onclick="core('00')"></div>
-    <div class="cell border p-0 m-0" id="01" onclick="core('01')"></div>
-    <div class="cell border p-0 m-0" id="02" onclick="core('02')"></div>
-    <div class="cell border p-0 m-0" id="10" onclick="core('10')"></div>
-    <div class="cell border p-0 m-0" id="11" onclick="core('11')"></div>
-    <div class="cell border p-0 m-0" id="12" onclick="core('12')"></div>
-    <div class="cell border p-0 m-0" id="20" onclick="core('20')"></div>
-    <div class="cell border p-0 m-0" id="21" onclick="core('21')"></div>
-    <div class="cell border p-0 m-0" id="22" onclick="core('22')"></div>
+    <div class="cell border p-0 m-0" id="00" onclick="core(this.id)"></div>
+    <div class="cell border p-0 m-0" id="01" onclick="core(this.id)"></div>
+    <div class="cell border p-0 m-0" id="02" onclick="core(this.id)"></div>
+    <div class="cell border p-0 m-0" id="10" onclick="core(this.id)"></div>
+    <div class="cell border p-0 m-0" id="11" onclick="core(this.id)"></div>
+    <div class="cell border p-0 m-0" id="12" onclick="core(this.id)"></div>
+    <div class="cell border p-0 m-0" id="20" onclick="core(this.id)"></div>
+    <div class="cell border p-0 m-0" id="21" onclick="core(this.id)"></div>
+    <div class="cell border p-0 m-0" id="22" onclick="core(this.id)"></div>
 </div>
 
 <!-- Button for the settings -->
-<button type="button" class="btn btn-info settings" data-toggle="modal" data-target="#settings"><i class="fas fa-cog"></i></button>
+<button type="button" class="btn btn-info settings" data-toggle="modal" data-target="#settings">
+    <span class="fas fa-cog"></span>
+</button>
+
 <!-- Modal for the settings -->
 <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -74,7 +79,9 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="settingsLabel">Settings</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    <span aria-hidden="true">
+                        <span class="fas fa-times"></span>
+                    </span>
                 </button>
             </div>
             <div class="modal-body">
@@ -92,5 +99,6 @@
 
 <!-- JS for the game -->
 <script src="game.js"></script>
+
 </body>
 </html>
