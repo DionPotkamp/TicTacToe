@@ -38,7 +38,7 @@ function autoplaySpeed() {
 let autoPlayIterations = 10;
 document.getElementById('iteration').innerHTML = 'Set&nbsp;autoplay&nbsp;iterations ('+autoPlayIterations+')';
 function autoplayIt() {
-    autoPlayIterations = parseInt(prompt('Give the number of inerations'));
+    autoPlayIterations = parseInt(prompt('Give the number of iterations'));
     if (!Number.isInteger(autoPlayIterations)) {
         autoPlayIterations = 10;
     } else {
