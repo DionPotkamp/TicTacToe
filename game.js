@@ -10,8 +10,8 @@ let board = [
  * positions: all the available spots on the board. First letter = row, second = column
  */
 let positions = [
-    "00", "01", "02", 
-    "10", "11", "12", 
+    "00", "01", "02",
+    "10", "11", "12",
     "20", "21", "22"
 ];
 let positionArray = "";
@@ -53,7 +53,8 @@ let autoPlayAddWin = false;
 document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
 function autoplayScore() {
     autoPlayAddWin = confirm('Add autoplay wins to score. Choose OK to set to true, Choose cancel to set to false');
-    if (typeof autoPlayAddWin !== "boolean") {
+
+    if (typeof autoPlayAddWin !== 'boolean') {
         autoPlayAddWin = false;
         document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
     } else {
@@ -136,7 +137,7 @@ function checkIfAvailable(position) {
     } else {
         return false;
     }
-   
+
 }
 
 /**
@@ -171,7 +172,7 @@ function drawWin(type, cell) {
         document.getElementById(one).style.color = 'rgb(34, 221, 34)';
         document.getElementById(two).style.color = 'rgb(34, 221, 34)';
         document.getElementById(three).style.color = 'rgb(34, 221, 34)';
-        
+
         document.getElementById('text').innerHTML = CurrentPlayer + " won the game!";
         return true;
     } else if (type === 'vertical') {
@@ -181,21 +182,21 @@ function drawWin(type, cell) {
         document.getElementById(one).style.color = 'rgb(34, 221, 34)';
         document.getElementById(two).style.color = 'rgb(34, 221, 34)';
         document.getElementById(three).style.color = 'rgb(34, 221, 34)';
-        
+
         document.getElementById('text').innerHTML = CurrentPlayer + " won the game!";
         return true;
     } else if (type === 'diaL-R') {
         document.getElementById('00').style.color = 'rgb(34, 221, 34)';
         document.getElementById('11').style.color = 'rgb(34, 221, 34)';
         document.getElementById('22').style.color = 'rgb(34, 221, 34)';
-        
+
         document.getElementById('text').innerHTML = CurrentPlayer + " won the game!";
         return true;
     } else if (type === 'diaR-L') {
         document.getElementById('02').style.color = 'rgb(34, 221, 34)';
         document.getElementById('11').style.color = 'rgb(34, 221, 34)';
         document.getElementById('20').style.color = 'rgb(34, 221, 34)';
-        
+
         document.getElementById('text').innerHTML = CurrentPlayer + " won the game!";
         return true;
     } else if (type === 'draw') {
@@ -204,7 +205,7 @@ function drawWin(type, cell) {
         function one(value) {
             document.getElementById(value).style.color = 'rgb(128, 128, 128)';
         }
-        
+
         document.getElementById('text').innerHTML = "Draw!";
         return true;
     }
@@ -270,7 +271,7 @@ function checkWinner() {
         autoPlayI++;
         return true;
     }
-    
+
     return false;
 }
 
@@ -294,7 +295,7 @@ function addWin() {
  * Resets all of the variables
  * @return boolean, if the execution was a success or not.
  */
-function restartGame() {    
+function restartGame() {
     board = [['', '', ''],['', '', ''],['', '', '']];
     positions = ["00", "01", "02", "10", "11", "12", "20", "21", "22"];
     positionArray = "";
@@ -305,12 +306,12 @@ function restartGame() {
         CurrentPlayer = 'X';
     }
     document.getElementById('text').innerHTML = 'Starting player is: ' + CurrentPlayer;
-    
+
     winner = null;
-    
+
     PlayerX = '<i class="fas fa-times"></i>';
     PlayerO = '<i class="far fa-circle"></i>';
-    
+
     positions.forEach(one);
     function one(value) {
         document.getElementById(value).innerHTML = "&nbsp;";
@@ -324,7 +325,7 @@ function restartGame() {
  * @return boolean, if the execution was a success or not.
  */
 function resetScores() {
-    
+
     PlayerXWins = 0;
     PlayerOWins = 0;
     PlayerDraws = 0;
@@ -363,7 +364,7 @@ function autoPlay() {
     if(positions === undefined || positions.length === 0) restartGame();
 
     let position = positions[Math.floor(Math.random() * positions.length)];
-    
+
     if (checkIfAvailable(position)) {
         if (putInBoard(position)) {
             if (place(position)) {
