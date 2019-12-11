@@ -54,11 +54,16 @@ document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;sco
 function autoplayScore() {
     autoPlayAddWin = confirm('Add autoplay wins to score. Choose OK to set to true, Choose cancel to set to false');
 
-    if (typeof autoPlayAddWin !== 'boolean') {
-        autoPlayAddWin = false;
-        document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
+    if (typeof autoPlayAddWin === 'boolean') {
+        if(autoPlayAddWin) {
+            autoPlayAddWin = true;
+            document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
+        } else {
+            autoPlayAddWin = false;
+            document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
+        }
     } else {
-        autoPlayAddWin = true;
+        autoPlayAddWin = false;
         document.getElementById('score').innerHTML = 'Add&nbsp;autoplay&nbsp;to&nbsp;score ('+autoPlayAddWin+')';
     }
 }
