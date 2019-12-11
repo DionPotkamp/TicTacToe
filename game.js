@@ -72,7 +72,8 @@ let autoPlayI = 0;
 /** array of all possible players */
 let players = ['X', 'O'];
 let CurrentPlayer = setNewPlayer();
-    document.getElementById('text').innerHTML = 'Starting player is: ' + CurrentPlayer;
+let textElement = document.getElementById('text');
+textElement.innerHTML = 'Starting player is: ' + CurrentPlayer;
 
 /** using font awesome to draw the X and O */
 let PlayerX = '<i class="fas fa-times"></i>';
@@ -99,11 +100,11 @@ function switchPlayer() {
         return false;
     } else if (CurrentPlayer === "X") {
         CurrentPlayer = "O";
-        document.getElementById('text').innerHTML = "Current player is " + CurrentPlayer;
+        textElement.innerHTML = "Current player is " + CurrentPlayer;
         return true;
     } else if (CurrentPlayer === "O") {
         CurrentPlayer = "X";
-        document.getElementById('text').innerHTML = "Current player is " + CurrentPlayer;
+        textElement.innerHTML = "Current player is " + CurrentPlayer;
         return true;
     } else {
         return false;
@@ -211,7 +212,7 @@ function drawWin(type, cell) {
             document.getElementById(value).style.color = 'rgb(128, 128, 128)';
         }
 
-        document.getElementById('text').innerHTML = "Draw!";
+        textElement.innerHTML = "Draw!";
         return true;
     }
     return false;
@@ -310,7 +311,7 @@ function restartGame() {
     } else if(winner === 'O') {
         CurrentPlayer = 'X';
     }
-    document.getElementById('text').innerHTML = 'Starting player is: ' + CurrentPlayer;
+    textElement.innerHTML = 'Starting player is: ' + CurrentPlayer;
 
     winner = null;
 
@@ -346,9 +347,7 @@ function resetScores() {
  * @return void, to stop the function.
  */
 function coreAutoPlay() {
-    if (isAutoPlaying) {
-        return;
-    } else {
+    if (!isAutoPlaying) {
         isAutoPlaying = true;
         autoPlay();
     }
